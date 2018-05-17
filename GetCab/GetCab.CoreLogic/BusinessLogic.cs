@@ -7,9 +7,14 @@ using GetCab.BusinessLogicContracts;
 
 namespace GetCab.CoreLogic
 {
-    class BusinessLogic : IBusinessLogic
+    public class BusinessLogic : IBusinessLogic
     {
         public bool Add()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CanAuthenticate()
         {
             throw new NotImplementedException();
         }

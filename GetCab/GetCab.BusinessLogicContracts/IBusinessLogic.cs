@@ -8,6 +8,7 @@ namespace GetCab.BusinessLogicContracts
 {
     public interface IBusinessLogic
     {
+        bool CanAuthenticate();
         bool Add();
     }
 }

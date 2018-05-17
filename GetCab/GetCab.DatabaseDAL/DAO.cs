@@ -7,7 +7,7 @@ using GetCab.DALContracts;
 
 namespace GetCab.DatabaseDAL
 {
-    class DAO : IDAO
+    public class DAO : IDAO
     {
         public bool Add()
         {
