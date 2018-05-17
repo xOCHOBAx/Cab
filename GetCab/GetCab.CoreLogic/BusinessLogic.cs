@@ -16,6 +16,11 @@ namespace GetCab.CoreLogic
 
         public bool CanAuthenticate()
         {
+            return true;
+        }
+
+        public string[] GetRolesForUser(string username)
+        {
             throw new NotImplementedException();
         }
     }

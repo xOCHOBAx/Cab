@@ -10,7 +10,10 @@ namespace GetCab.WebUI.Models
     // В профиль пользователя можно добавить дополнительные данные, если указать больше свойств для класса ApplicationUser. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=317594.
     public class ApplicationUser : IdentityUser
     {
-        public int Age { get; set; }
+        public string Login { get; set; }
+        public string Phone { get; set; }
+        public string First_Name { get; set; }
+        public string Last_Name { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -24,7 +27,7 @@ namespace GetCab.WebUI.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("GetCabDB", throwIfV1Schema: false)
         {
         }
 

@@ -80,7 +80,7 @@ namespace GetCab.WebUI.Controllers
             if (BusinessLogic.CanAuthenticate())
             {
                 FormsAuthentication.SetAuthCookie(model.Email,false);
-                return RedirectToAction("Home","Index");
+                return RedirectToAction("Index","Home");
             }
 
             return View(model);
@@ -409,7 +409,7 @@ namespace GetCab.WebUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
 

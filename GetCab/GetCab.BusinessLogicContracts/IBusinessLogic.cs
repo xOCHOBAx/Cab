@@ -10,5 +10,6 @@ namespace GetCab.BusinessLogicContracts
     {
         bool CanAuthenticate();
         bool Add();
+        string[] GetRolesForUser(string username);
     }
 }

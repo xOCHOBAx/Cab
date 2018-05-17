@@ -59,7 +59,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IdentityModels.cs" />
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Ride.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
