@@ -162,7 +162,8 @@ namespace GetCab.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Age = model.Age };
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 
                 //var result = await UserManager.CreateAsync(user, model.Password); andruha vipilil
                 //if (result.Succeeded)
@@ -179,10 +180,13 @@ namespace GetCab.WebUI.Controllers
                 //}
                 //AddErrors(result);
 
-                if (BusinessLogic.Add())
-                {
+                var apdbcont = ApplicationDbContext.Create();
+                    apdbcont.Users.Add(new ApplicationUser());
+                apdbcont.SaveChanges();
 
-                }
+                //if (BusinessLogic.Add())
+                //{
+                //}
 
             }
 

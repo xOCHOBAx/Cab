@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GetCab.Models
 {
-    class Ride
+    public class Ride
     {
         public int Id { get; set; }
         public int Driver_Id { get; set; }

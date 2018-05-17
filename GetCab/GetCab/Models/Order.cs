@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GetCab.Models
 {
-    class Order
+    public class Order
     {
         public int Id { get; set; }
         public int User_Id { get; set; }
