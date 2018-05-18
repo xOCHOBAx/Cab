@@ -8,10 +8,11 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using GetCab.WebUI.Models;
+using GetCab.Common.Models;
 using GetCab.BusinessLogicContracts;
 using GetCab.CoreLogic;
 using System.Web.Security;
+using GetCab.WebUI.Models;
 
 namespace GetCab.WebUI.Controllers
 {

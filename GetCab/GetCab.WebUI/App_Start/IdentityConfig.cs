@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using GetCab.WebUI.Models;
+using GetCab.Common;
+using GetCab.Common.Models;
 
 namespace GetCab.WebUI
 {

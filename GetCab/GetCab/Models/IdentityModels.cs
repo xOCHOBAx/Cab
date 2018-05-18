@@ -3,18 +3,20 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using GetCab.WebUI;
+using GetCab.Common.Models;
 using GetCab.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GetCab.WebUI.Models
+namespace GetCab.Common.Models
 {
     // В профиль пользователя можно добавить дополнительные данные, если указать больше свойств для класса ApplicationUser. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=317594.
-    public class ApplicationUser : IdentityUser<string,IdentityUserLogin<string>,ApplicationUserRole,IdentityUserClaim<string>>
+    public class ApplicationUser : IdentityUser
     {
-        public string Login { get; set; }
-        public string Phone { get; set; }
-        public string First_Name { get; set; }
-        public string Last_Name { get; set; }
+        
+        //public string Login { get; set; }
+        //public string Phone { get; set; }
+        //public string First_Name { get; set; }
+        //public string Last_Name { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -25,49 +27,32 @@ namespace GetCab.WebUI.Models
         }
     }
 
-    public class ApplicationUserContext : DbContext
-    {
-        public ApplicationUserContext() :
-                base("GetCabDB")
-        {
-        }
-        public DbSet<ApplicationUser> Users { get; set; }
-    }
-
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("GetCabDB")
+            : base("GetCabDB", throwIfV1Schema: false)
         {
         }
 
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<Ride> Rides{ get; set; }
-        public DbSet<Car> Cars{ get; set; }
+        public DbSet<Order> Orders;
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<ApplicationUser>().Map(c =>
-        //    {
-        //        c.ToTable("User");
-        //    });
-            
-        //    modelBuilder.Entity<IdentityRole>().HasKey(r => new { r.User_Id, r.Role_Id}).ToTable("UserRoles");
-        //}
-    }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
-    public class ApplicationRole : IdentityRole<string, ApplicationUserRole>
-    {
-        public int User_Id { get; set; }
-        public int Role_Id { get; set; }
+            modelBuilder.Entity<ApplicationUser>().ToTable("User");
+            modelBuilder.Entity<Order>().ToTable("Order");
+            modelBuilder.Entity<Ride>().ToTable("Ride");
+            modelBuilder.Entity<Car>().ToTable("Car");
+            modelBuilder.Entity<IdentityRole>().ToTable("Roles");
+            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
+            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
+            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
+        }
     }
-
-    public class ApplicationUserRole : IdentityUserRole<string> { }
-    
-   
 }
