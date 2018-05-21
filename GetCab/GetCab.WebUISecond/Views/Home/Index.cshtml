@@ -1,7 +1,4 @@
-﻿@using GetCab.Models
-@using GetCab.Common.Models
-@model GetCab.Common.Models.ApplicationDbContext
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
@@ -11,15 +8,6 @@
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
-@using ( var db = new ApplicationDbContext())
-{
-    //db.Roles.Add(new Microsoft.AspNet.Identity.EntityFramework.IdentityRole("hui"));
-    //db.SaveChanges();
-    foreach (var item in db.Roles)
-    {
-        <p>@item.Name</p>
-    }
-}
 
 <div class="row">
     <div class="col-md-4">

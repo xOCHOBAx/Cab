@@ -10,24 +10,29 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GetCab.WebUISecond.Models;
 using GetCab.Common.Models;
+using GetCab.BusinessLogicContracts;
+using System.Web.Security;
+using GetCab.CoreLogic;
 
 namespace GetCab.WebUISecond.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private IBusinessLogic businessLogic;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        public AccountController()
-        {
+        //public AccountController()
+        //{
             
-        }
+        //}
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,IBusinessLogic b )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            businessLogic = new BusinessLogic();
         }
 
         public ApplicationSignInManager SignInManager
@@ -75,9 +80,11 @@ namespace GetCab.WebUISecond.Controllers
                 return View(model);
             }
 
+            if (businessLogic.CanAuthenticate()) { return View(model); }
+
             // Сбои при входе не приводят к блокированию учетной записи
             // Чтобы ошибки при вводе пароля инициировали блокирование учетной записи, замените на shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Login, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:

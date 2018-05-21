@@ -29,33 +29,19 @@ namespace GetCab.Common.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("GetCabDB", throwIfV1Schema: false)
+        public static ApplicationDbContext Create()
         {
-
+            return new ApplicationDbContext();
         }
 
         public DbSet<Car> Car { get; set; }
         public DbSet<Order> Order { get; set; }
 
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<ApplicationUser>().ToTable("User");
-            modelBuilder.Entity<Order>().ToTable("Order");
-            modelBuilder.Entity<Ride>().ToTable("Ride");
-            modelBuilder.Entity<Car>().ToTable("Car");
-            modelBuilder.Entity<IdentityRole>().ToTable("Roles");
-            modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaims");
-            modelBuilder.Entity<IdentityUserLogin>().ToTable("UserLogins");
-            modelBuilder.Entity<IdentityUserRole>().ToTable("UserRoles");
         }
     }
+
 }

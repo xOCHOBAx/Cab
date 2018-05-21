@@ -51,7 +51,7 @@ namespace GetCab.WebUISecond.Models
         [Required]
         [Display(Name = "Адрес электронной почты")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string Login { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

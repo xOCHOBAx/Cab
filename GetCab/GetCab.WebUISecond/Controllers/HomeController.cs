@@ -11,7 +11,7 @@ namespace GetCab.WebUISecond.Controllers
     {
         public ActionResult Index()
         {
-            ApplicationDbContext Model = new ApplicationDbContext();
+            //ApplicationDbContext Model = new ApplicationDbContext();
             return View();
         }
 
