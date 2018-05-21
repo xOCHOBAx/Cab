@@ -13,11 +13,14 @@
 
 @using ( var db = new ApplicationDbContext())
 {
-    foreach (var item in db.Car)
+    //db.Roles.Add(new Microsoft.AspNet.Identity.EntityFramework.IdentityRole("hui"));
+    //db.SaveChanges();
+    foreach (var item in db.Roles)
     {
-        <p>@item.Id</p>
+        <p>@item.Name</p>
     }
 }
+
 <div class="row">
     <div class="col-md-4">
         <h2>Getting started</h2>

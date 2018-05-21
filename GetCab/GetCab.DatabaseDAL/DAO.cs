@@ -11,14 +11,11 @@ namespace GetCab.DatabaseDAL
 {
     public class DAO : IDAO
     {
-        ApplicationDbContext context;
+        
 
         public DAO()
         {
-            context = new ApplicationDbContext()
-            {
-                
-            }           ;
+           
         }
 
 
@@ -28,4 +25,5 @@ namespace GetCab.DatabaseDAL
         }
 
     }
+
 }
