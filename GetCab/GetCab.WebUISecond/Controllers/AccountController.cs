@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GetCab.WebUISecond.Models;
+using GetCab.Common.Models;
 
 namespace GetCab.WebUISecond.Controllers
 {
@@ -20,6 +21,7 @@ namespace GetCab.WebUISecond.Controllers
 
         public AccountController()
         {
+            
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GetCab.Common.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace GetCab.WebUISecond.Controllers
     {
         public ActionResult Index()
         {
+            ApplicationDbContext Model = new ApplicationDbContext();
             return View();
         }
 

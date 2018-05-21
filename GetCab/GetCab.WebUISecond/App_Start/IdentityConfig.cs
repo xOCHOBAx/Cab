@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using GetCab.WebUISecond.Models;
+using GetCab.Common.Models;
 
 namespace GetCab.WebUISecond
 {
@@ -95,6 +96,13 @@ namespace GetCab.WebUISecond
         public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
             : base(userManager, authenticationManager)
         {
+
+
+        }
+
+        public async Task SignInAsync(ApplicationUser user, bool isPersistent, bool rememberBrowser)
+        {
+           AuthenticationManager.SignIn();
         }
 
         public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)

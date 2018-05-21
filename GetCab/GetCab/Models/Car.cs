@@ -11,6 +11,6 @@ namespace GetCab.Models
         public int Id { get; set; }
         public string Model { get; set; }
         public string License_plate { get; set; }
-        public int Driver_Id { get; set; }
+        public string Driver_Id { get; set; }
     }
 }
